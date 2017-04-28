@@ -41,8 +41,8 @@ class CreateBuildFinishes < ActiveRecord::Migration
       t.string :sale_saleDetail
       t.datetime :sale_startDate
       t.datetime :sale_endDate
-      t.numeric :savingsDetails_standard
-      t.numeric :savingsDetails_total
+      t.decimal :savingsDetails_standard
+      t.decimal :savingsDetails_total
       t.integer :savingsDetails_percentage
 
       t.timestamps null: false
