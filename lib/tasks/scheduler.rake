@@ -4,7 +4,10 @@ task :scrape => :environment do
 
 	page = MetaInspector.new("https://www.build.com/wac-lighting-wl-led100-c/s752331?uid=2277216")
 	j = JSON.parse(page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1])
-	puts j["finishes"]
-	
+	j["finishes"].each do |f|
+		puts f
+		BuildFinish.create(f)
+	end
+
   puts "done."
 end
