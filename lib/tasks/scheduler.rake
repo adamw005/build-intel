@@ -21,9 +21,7 @@ task :scrape => :environment do
 		f.delete("savingsDetails")
 		f.delete("type")
 		BuildFinish.create(f)
-		end
-
-  puts "done."
 	end
 
+  puts "done."
 end
