@@ -1,0 +1,91 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  application: MyString
+  type: 
+  productCompositeId: MyString
+  manufacturer: MyString
+  productId: MyString
+  selectedFinish: false
+  freeShippingMessage: MyString
+  leadTimeMessage: MyString
+  name: MyString
+  masterFinish: MyString
+  uniqueId: MyString
+  msrp: 9.99
+  price: 9.99
+  consumerPrice: 9.99
+  sku: MyString
+  title: MyString
+  slug: MyString
+  familyLink: MyString
+  productLink: MyString
+  savings: 9.99
+  stock: 1
+  swatchStyles: MyString
+  swatchImage: MyString
+  hideStock: false
+  friendlyStatus: MyString
+  stockMessage: MyString
+  isOutOfStock: false
+  isMadeToOrder: false
+  isPreOrder: false
+  status: MyString
+  savingsFromConsumerPrice: 9.99
+  image100x100: MyString
+  image220x220: MyString
+  isPaint: false
+  images_defaultImg: MyString
+  sale_productSaleId: MyString
+  sale_catchLine: MyString
+  sale_saleDetail: MyString
+  sale_startDate: 2017-04-28 16:36:12
+  sale_endDate: 2017-04-28 16:36:12
+  savingsDetails_standard: 
+  savingsDetails_total: 
+  savingsDetails_percentage: 1
+
+two:
+  application: MyString
+  type: 
+  productCompositeId: MyString
+  manufacturer: MyString
+  productId: MyString
+  selectedFinish: false
+  freeShippingMessage: MyString
+  leadTimeMessage: MyString
+  name: MyString
+  masterFinish: MyString
+  uniqueId: MyString
+  msrp: 9.99
+  price: 9.99
+  consumerPrice: 9.99
+  sku: MyString
+  title: MyString
+  slug: MyString
+  familyLink: MyString
+  productLink: MyString
+  savings: 9.99
+  stock: 1
+  swatchStyles: MyString
+  swatchImage: MyString
+  hideStock: false
+  friendlyStatus: MyString
+  stockMessage: MyString
+  isOutOfStock: false
+  isMadeToOrder: false
+  isPreOrder: false
+  status: MyString
+  savingsFromConsumerPrice: 9.99
+  image100x100: MyString
+  image220x220: MyString
+  isPaint: false
+  images_defaultImg: MyString
+  sale_productSaleId: MyString
+  sale_catchLine: MyString
+  sale_saleDetail: MyString
+  sale_startDate: 2017-04-28 16:36:12
+  sale_endDate: 2017-04-28 16:36:12
+  savingsDetails_standard: 
+  savingsDetails_total: 
+  savingsDetails_percentage: 1

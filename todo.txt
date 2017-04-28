@@ -1,0 +1,18 @@
+[] Create Rails app
+[] Create Model(s) from JSO or just do it yourself (only 1 model)
+[] Create Rake Task that runs every so often (twice a day) to scrape from a Category(?) and save to database
+	[] Install scraping gem
+[] Install Blazer gem
+
+
+
+
+
+
+
+
+
+
+
+
+rails g model BuildFinish application:string productCompositeId:string manufacturer:string productId:string selectedFinish:boolean freeShippingMessage:string leadTimeMessage:string name:string masterFinish:string uniqueId:string msrp:decimal price:decimal consumerPrice:decimal sku:string title:string slug:string familyLink:string productLink:string savings:decimal stock:integer swatchStyles:string swatchImage:string hideStock:boolean friendlyStatus:string stockMessage:string isOutOfStock:boolean isMadeToOrder:boolean isPreOrder:boolean status:string savingsFromConsumerPrice:decimal image100x100:string image220x220:string isPaint:boolean images_defaultImg:string sale_productSaleId:string sale_catchLine:string sale_saleDetail:string sale_startDate:datetime sale_endDate:datetime savingsDetails_standard:numeric savingsDetails_total:numeric savingsDetails_percentage:integer type:string 
