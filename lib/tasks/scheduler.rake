@@ -83,9 +83,9 @@ task :scrape => :environment do
 				# f.delete("type")
 				BuildFinish.create(f)
 			end
-			# puts "Finished saving Finishes to database"
 			status_count_success += 1
-			status = ":SUCCESS   -   " + 	status_count_success.to_s + "/" + (status_count_total+1).to_s
+			# puts "Finished saving Finishes to database"
+			status = ":SUCCESS   -   " + 	status_count_success + "/" + (status_count_total+1).to_s + "\n"
 		end
 		status_count_total += 1
 		print status
