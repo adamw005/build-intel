@@ -9,11 +9,13 @@ task :scrape => :environment do
 
 
 	urls.shuffle.each do |url|
-		status = "--- FAILED"	# Used as the default
+		status_count_success = 0
+		status_count_total = 0
+		status = ":FAIL"	# Used as the default
 		agent = user_agent.sample
-		puts "Retrieving " + url + " with " + agent
+		# puts "Retrieving " + url + " with " + agent
 		page = MetaInspector.new(url, :headers => {'User-Agent' => agent})
-		puts "Retrieved " + url
+		# puts "Retrieved " + url
 		subs = page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1]
 		unless subs.nil?
 			j = JSON.parse(subs)
@@ -81,13 +83,16 @@ task :scrape => :environment do
 				# f.delete("type")
 				BuildFinish.create(f)
 			end
-			puts "Finished saving Finishes to database"
-			status = "--- SUCCESS"
+			# puts "Finished saving Finishes to database"
+			status_count_success += 1
+			status = ":SUCCESS   -   " + 	status_count_success.to_s + "/" + (status_count_total+1).to_s
 		end
+		status_count_total += 1
 		print status
 		rnd = rand(3..12)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
+
 
 	end
 
