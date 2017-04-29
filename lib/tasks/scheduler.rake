@@ -12,9 +12,9 @@ task :scrape => :environment do
 		j = JSON.parse(page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1])
 		j["finishes"].each do |f|
 			puts f
-			f.each do |k|
-			  k = k.to_s
-			end
+			# f.each do |k|
+			#   k = k.to_s
+			# end
 			begin
 				f["images_defaultImg"] = f["images"]["defaultImg"]
 			rescue; end
@@ -75,7 +75,7 @@ task :scrape => :environment do
 			# f.delete("type")
 			BuildFinish.create(f)
 		end
-		puts "Finished saving " + j["finishes"].count + " Finishes to database"
+		puts "Finished saving Finishes to database"
 		sleep(rand(3..15))
 
 	end
