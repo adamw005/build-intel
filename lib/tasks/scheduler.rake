@@ -12,6 +12,11 @@ task :scrape => :environment do
 		j = JSON.parse(page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1])
 		j["finishes"].each do |f|
 			puts f
+			f.each do |obj| 
+			  obj.map do |k, v|
+			      {k => v.to_s}
+			  end
+			end
 			begin
 				f["images_defaultImg"] = f["images"]["defaultImg"]
 			rescue; end
