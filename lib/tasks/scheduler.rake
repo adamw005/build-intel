@@ -75,7 +75,7 @@ task :scrape => :environment do
 			BuildFinish.create(f)
 		end
 		puts "Finished saving Finishes to database"
-		rnd = rand(3..15)
+		rnd = rand(15..45)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
 
