@@ -11,7 +11,6 @@ task :scrape => :environment do
 		puts "Retrieved " + url
 		j = JSON.parse(page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1])
 		j["finishes"].each do |f|
-			puts f
 			# f.each do |k|
 			#   k = k.to_s
 			# end
@@ -76,7 +75,9 @@ task :scrape => :environment do
 			BuildFinish.create(f)
 		end
 		puts "Finished saving Finishes to database"
-		sleep(rand(3..15))
+		rnd = rand(3..15)
+		puts "Pausing for " + rnd.to_s + " seconds."
+		sleep(rnd)
 
 	end
 
