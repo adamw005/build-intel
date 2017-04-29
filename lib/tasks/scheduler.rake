@@ -85,7 +85,7 @@ task :scrape => :environment do
 			status = "--- SUCCESS"
 		end
 		print status
-		rnd = rand(15..45)
+		rnd = rand(3..12)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
 
