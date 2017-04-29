@@ -9,6 +9,7 @@ task :scrape => :environment do
 
 
 	urls.shuffle.each do |url|
+		status = "--- FAILED"	# Used as the default
 		agent = user_agent.sample
 		puts "Retrieving " + url + " with " + agent
 		page = MetaInspector.new(url, :headers => {'User-Agent' => agent})
@@ -81,7 +82,9 @@ task :scrape => :environment do
 				BuildFinish.create(f)
 			end
 			puts "Finished saving Finishes to database"
+			status = "--- SUCCESS"
 		end
+		print status
 		rnd = rand(15..45)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
