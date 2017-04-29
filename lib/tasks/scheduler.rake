@@ -12,20 +12,64 @@ task :scrape => :environment do
 		j = JSON.parse(page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1])
 		j["finishes"].each do |f|
 			puts f
-			f["images_defaultImg"] = f["images"]["defaultImg"]
-			f["sale_productSaleId"] = f["sale"]["productSaleId"]
-			f["sale_catchLine"] = f["sale"]["catchLine"]
-			f["sale_saleDetail"] = f["sale"]["saleDetail"]
-			f["sale_startDate"] = f["sale"]["startDate"]
-			f["sale_endDate"] = f["sale"]["endDate"]
-			f["savingsDetails_standard"] = f["savingsDetails"]["standard"]
-			f["savingsDetails_total"] = f["savingsDetails"]["total"]
-			f["savingsDetails_percentage"] = f["savingsDetails"]["percentage"]
-			f["type_of"] = f["type"]
-			f.delete("images")
-			f.delete("sale")
-			f.delete("savingsDetails")
-			f.delete("type")
+			begin
+				f["images_defaultImg"] = f["images"]["defaultImg"]
+			rescue; end
+			begin
+				f["sale_productSaleId"] = f["sale"]["productSaleId"]
+			rescue; end
+			begin
+				f["sale_catchLine"] = f["sale"]["catchLine"]
+			rescue; end
+			begin
+				f["sale_saleDetail"] = f["sale"]["saleDetail"]
+			rescue; end
+			begin
+				f["sale_startDate"] = f["sale"]["startDate"]
+			rescue; end
+			begin
+				f["sale_endDate"] = f["sale"]["endDate"]
+			rescue; end
+			begin
+				f["savingsDetails_standard"] = f["savingsDetails"]["standard"]
+			rescue; end
+			begin
+				f["savingsDetails_total"] = f["savingsDetails"]["total"]
+			rescue; end
+			begin
+				f["savingsDetails_percentage"] = f["savingsDetails"]["percentage"]
+			rescue; end
+			begin
+				f["type_of"] = f["type"]
+			rescue; end
+			begin
+				f.delete("images")
+			rescue; end
+			begin
+				f.delete("sale")
+			rescue; end
+			begin
+				f.delete("savingsDetails")
+			rescue; end
+			begin
+				f.delete("type")
+			rescue; end
+
+			# f["images_defaultImg"] = f["images"]["defaultImg"]
+			# f["sale_productSaleId"] = f["sale"]["productSaleId"]
+			# f["sale_catchLine"] = f["sale"]["catchLine"]
+			# f["sale_saleDetail"] = f["sale"]["saleDetail"]
+			# f["sale_startDate"] = f["sale"]["startDate"]
+			# f["sale_endDate"] = f["sale"]["endDate"]
+			# f["savingsDetails_standard"] = f["savingsDetails"]["standard"]
+			# f["savingsDetails_total"] = f["savingsDetails"]["total"]
+			# f["savingsDetails_percentage"] = f["savingsDetails"]["percentage"]
+			# f["type_of"] = f["type"]
+			#
+			# f.delete("images")
+			# f.delete("sale")
+			# f.delete("savingsDetails")
+			# f.delete("type")
 			BuildFinish.create(f)
 		end
 		puts "Finished saving " + j["finishes"].count + " Finishes to database"
