@@ -4,9 +4,10 @@
 	[x] Install scraping gem
 [x] Install Blazer gem
 
-
-
-
+[] Random User agent gem
+	gem 'useragents'
+	UserAgents.rand()
+	https://github.com/debbbbie/useragents-rb
 
 
 
