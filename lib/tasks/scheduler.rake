@@ -12,7 +12,7 @@ task :scrape => :environment do
 
 	urls.shuffle.each do |url|
 		status = ":FAIL"	# Used as the default
-		agent = UserAgents.rand()
+		agent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" # UserAgents.rand()
 		# puts "Retrieving " + url + " with " + agent
 		page = MetaInspector.new(url, :headers => {'User-Agent' => agent})
 		# puts "Retrieved " + url
@@ -88,7 +88,7 @@ task :scrape => :environment do
 			status = ":SUCCESS   -   " + 	status_count_success.to_s + "/" + (status_count_total+1).to_s + "\n"
 		end
 		status_count_total += 1
-		print status
+		print status + "\n"
 		rnd = rand(3..12)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
