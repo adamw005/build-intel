@@ -27,6 +27,7 @@ gem 'metainspector'
 gem 'blazer'
 gem 'nokogiri'
 gem 'useragents'
+gem 'mechanize'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
