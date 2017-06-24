@@ -71,7 +71,6 @@ task :scrape => :environment do
 				begin
 					f.delete("images")
 				rescue; end
-        puts 3
 				begin
 					f.delete("sale")
 				rescue; end
