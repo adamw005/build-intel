@@ -31,9 +31,11 @@ task :scrape => :environment do
 
 		subs = page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1]
 		unless subs.nil?
-			j = JSON.parse(subs)
+      puts 0
+      j = JSON.parse(subs)
+      puts 1
 			j["finishes"].each do |f|
-        puts f
+        puts 2
 				# f.each do |k|
 				#   k = k.to_s
 				# end
