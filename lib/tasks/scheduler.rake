@@ -114,7 +114,7 @@ end
 
 
 desc "Schedule tasks"
-task :scrape => :environment do
+task :test => :environment do
   puts "Beginning test..."
 
   url = "https://twitter.com"
