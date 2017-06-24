@@ -111,3 +111,22 @@ task :scrape => :environment do
 
   puts "done."
 end
+
+
+desc "Schedule tasks"
+task :scrape => :environment do
+  puts "Beginning test..."
+
+  url = "https://twitter.com"
+  proxy = "proxy.crawlera.com:8010"
+  proxy_auth = "69fe042ec37a4ce3afc83c5eee8d1432:"
+
+  c = Curl::Easy.new(url) do |curl|
+    curl.proxypwd = proxy_auth
+    curl.proxy_url = proxy
+    curl.verbose = true
+  end
+
+  c.perform
+  puts c.body_str
+end
