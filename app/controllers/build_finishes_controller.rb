@@ -4,8 +4,8 @@ class BuildFinishesController < ApplicationController
 	end
 
 	def create
-		@build_finish = BuildFinish.new build_finish_params
-		@build_finish.attributes = hash.reject{|k,v| !@build_finish.attributes.keys.member?(k.to_s) }
+		@build_finish = BuildFinish.new build_finish_params.slice(BuildFinish.column_names)
+		# @build_finish.attributes = hash.reject{|k,v| !@build_finish.attributes.keys.member?(k.to_s) }
 		if @build_finish.save
 			redirect_to :root
 		else
