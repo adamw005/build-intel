@@ -22,20 +22,16 @@ task :scrape => :environment do
     curl.proxypwd = proxy_auth
     curl.proxy_url = proxy
     curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
-    curl.verbose = true
+    curl.verbose = false
     end
 
     c.perform
     page = c.body_str
-    puts page[0..100]
 
 		subs = page.to_s[/#{"<script>var dataLayer = "}(.*?)#{";</script"}/m, 1]
 		unless subs.nil?
-      puts 0
       j = JSON.parse(subs)
-      puts 1
 			j["finishes"].each do |f|
-        puts 2
 				# f.each do |k|
 				#   k = k.to_s
 				# end
@@ -110,17 +106,14 @@ task :scrape => :environment do
 				# f.delete("sale")
 				# f.delete("savingsDetails")
 				# f.delete("type")
-        puts 4
-        puts f
 				BuildFinish.create(f)
-        puts 5
 			end
 			status_count_success += 1
 			# puts "Finished saving Finishes to database"
 			status = ":SUCCESS   -   " + 	status_count_success.to_s + "/" + (status_count_total+1).to_s + "\n"
 		end
 		status_count_total += 1
-		print status + status_count_success.to_s + "/" + (status_count_total+1).to_s + "\n"
+		print status
 		rnd = rand(3..12)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
