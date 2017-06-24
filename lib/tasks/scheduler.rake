@@ -88,6 +88,9 @@ task :scrape => :environment do
         begin
 					f.delete("finish")
 				rescue; end
+        begin
+					f.delete("upc")
+				rescue; end
 
 				# f["images_defaultImg"] = f["images"]["defaultImg"]
 				# f["sale_productSaleId"] = f["sale"]["productSaleId"]
