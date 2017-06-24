@@ -99,6 +99,7 @@ task :scrape => :environment do
 				# f.delete("savingsDetails")
 				# f.delete("type")
         puts 4
+        puts f
 				BuildFinish.create(f)
         puts 5
 			end
