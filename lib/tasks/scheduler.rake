@@ -72,6 +72,7 @@ task :scrape => :environment do
 				begin
 					f.delete("images")
 				rescue; end
+        puts 3
 				begin
 					f.delete("sale")
 				rescue; end
@@ -97,7 +98,9 @@ task :scrape => :environment do
 				# f.delete("sale")
 				# f.delete("savingsDetails")
 				# f.delete("type")
+        puts 4
 				BuildFinish.create(f)
+        puts 5
 			end
 			status_count_success += 1
 			# puts "Finished saving Finishes to database"
