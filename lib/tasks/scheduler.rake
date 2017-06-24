@@ -124,6 +124,7 @@ task :curbtest => :environment do
   c = Curl::Easy.new(url) do |curl|
     curl.proxypwd = proxy_auth
     curl.proxy_url = proxy
+    curl.ca_path = ENV['SSL_CERT_FILE']
     curl.verbose = true
   end
 
