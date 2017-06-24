@@ -69,6 +69,9 @@ task :scrape => :environment do
 				begin
 					f["type_of"] = f["type"]
 				rescue; end
+        begin
+          f["selectedFinish"] = f["finish"]
+        rescue; end
 				begin
 					f.delete("images")
 				rescue; end
@@ -81,6 +84,9 @@ task :scrape => :environment do
 				rescue; end
 				begin
 					f.delete("type")
+				rescue; end
+        begin
+					f.delete("finish")
 				rescue; end
 
 				# f["images_defaultImg"] = f["images"]["defaultImg"]
