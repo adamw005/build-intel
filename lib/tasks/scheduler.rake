@@ -152,9 +152,11 @@ task :search_skus => :environment do
   proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
 
   SkuUrl.where(url: nil).each do |s|
+    # Create the Search URL using the Manufacturer and SKU for records without a URL
     search_url = 'https://www.build.com/index.cfm?page=search%3Abrowse&term=' + s.manuf + '+' + s.sku
     puts 'Search URL: ' + search_url
 
+    # Create the Request
     c = Curl::Easy.new(search_url) do |curl|
       curl.proxypwd = proxy_auth
       curl.proxy_url = proxy
@@ -162,14 +164,17 @@ task :search_skus => :environment do
       curl.verbose = false
     end
 
+    # Perform the Request and parse the page with Nokogiri
     c.perform
-    puts c
+    puts c.header_str
+    puts c.headers['Location']
     # puts c.response
     # puts c.header
     # puts c.header['location']
     page = c.body_str
     html_doc = Nokogiri::HTML(page)
 
+    # For each Search Result, store that URL with Manufacturer and SKU, and if >0 URLs found destroy old record
     new_records = 0
     html_doc.css("a.product-link").each do |p|
       url = 'https://www.build.com' + p["href"].split(/\?/).first
