@@ -147,11 +147,12 @@ task :search_skus => :environment do
       end
       if new_records != 0
         puts ' -Search Page'
-        puts s.manuf + ' -- ' + s.sku + ': ' + url
+        puts s.manuf + ' -- ' + s.sku
         s.destroy
       else
         puts ' -SKU Not Found'
         s.url = 'Not Found'
+        s.save
       end
     end
   end
