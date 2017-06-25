@@ -171,12 +171,15 @@ task :search_skus => :environment do
 
     html_doc = Nokogiri::HTML(page)
 
+    new_records = 0
     html_doc.css("a.product-link").each do |p|
       url = 'https://www.build.com' + p["href"].split(/\?/).first
       SkuUrl.create(manuf: s.manuf, sku: s.sku, url: url)
       puts s.manuf + ' -- ' + s.sku + ': ' + url
+      new_records += 1
     end
-    s.destroy
+    if new_records <> 0 then s.destroy end
+
   end
   puts 'Finished.'
 
