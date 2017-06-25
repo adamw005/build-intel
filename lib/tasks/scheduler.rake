@@ -168,6 +168,7 @@ task :search_skus => :environment do
     c.perform
     # puts '1: ' + c.header_str[location]
     headers = HttpHeaders.new(c.header_str)
+    puts headers
     puts headers.location
 
     # puts c.response
@@ -176,14 +177,14 @@ task :search_skus => :environment do
     html_doc = Nokogiri::HTML(page)
 
     # For each Search Result, store that URL with Manufacturer and SKU, and if >0 URLs found destroy old record
-    new_records = 0
-    html_doc.css("a.product-link").each do |p|
-      url = 'https://www.build.com' + p["href"].split(/\?/).first
-      SkuUrl.create(manuf: s.manuf, sku: s.sku, url: url)
-      puts s.manuf + ' -- ' + s.sku + ': ' + url
-      new_records += 1
-    end
-    if new_records != 0 then s.destroy end
+    # new_records = 0
+    # html_doc.css("a.product-link").each do |p|
+    #   url = 'https://www.build.com' + p["href"].split(/\?/).first
+    #   SkuUrl.create(manuf: s.manuf, sku: s.sku, url: url)
+    #   puts s.manuf + ' -- ' + s.sku + ': ' + url
+    #   new_records += 1
+    # end
+    # if new_records != 0 then s.destroy end
 
   end
   puts 'Finished.'
