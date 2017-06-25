@@ -168,7 +168,6 @@ task :search_skus => :environment do
     # puts c.header
     # puts c.header['location']
     page = c.body_str
-
     html_doc = Nokogiri::HTML(page)
 
     new_records = 0
@@ -178,7 +177,7 @@ task :search_skus => :environment do
       puts s.manuf + ' -- ' + s.sku + ': ' + url
       new_records += 1
     end
-    if new_records <> 0 then s.destroy end
+    if new_records != 0 then s.destroy end
 
   end
   puts 'Finished.'
