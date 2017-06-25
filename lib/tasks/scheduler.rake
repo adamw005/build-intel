@@ -164,15 +164,13 @@ task :search_skus => :environment do
       curl.verbose = false
     end
 
-    # Perform the Request and parse the page with Nokogiri
+    # Perform the Request, parse the headers, and parse the page
     c.perform
-    # puts '1: ' + c.header_str[location]
+    # Parse the headers with HttpHeaders
     headers = HttpHeaders.new(c.header_str)
-    puts headers
+    puts headers.all
     puts headers.location
-
-    # puts c.response
-    # puts c.header
+    # Parse body with Nokogiri
     page = c.body_str
     html_doc = Nokogiri::HTML(page)
 
