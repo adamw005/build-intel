@@ -133,23 +133,24 @@ task :search_skus => :environment do
 
     # If redirect (meaning only 1 search result), use the redirect url as the product url
     if headers.location
-      puts 'Redirect'
+      puts ' -Redirect'
       s.url = 'https://www.build.com' + headers.location.split(/\?/).first
       s.save
       puts s.manuf + ' -- ' + s.sku + ': ' + s.url
     # For each Search Result, store that URL with Manufacturer and SKU, and if >0 URLs found destroy old record
     else
-      puts 'Not Redirect'
       new_records = 0
       html_doc.css("a.product-link").each do |p|
         url = 'https://www.build.com' + p["href"].split(/\?/).first
         SkuUrl.create(manuf: s.manuf, sku: s.sku, url: url)
-        puts s.manuf + ' -- ' + s.sku + ': ' + url
         new_records += 1
       end
       if new_records != 0
+        puts ' -Search Page'
+        puts s.manuf + ' -- ' + s.sku + ': ' + url
         s.destroy
       else
+        puts ' -SKU Not Found'
         s.url = 'Not Found'
       end
     end
