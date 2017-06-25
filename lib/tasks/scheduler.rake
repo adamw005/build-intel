@@ -163,8 +163,10 @@ task :search_skus => :environment do
     c.perform
     page = c.body_str
 
-		puts page
-    
+    html_doc = Nokogiri::HTML(page)
+    html_doc.url-product-link
+    puts page
+
   end
 
 end
