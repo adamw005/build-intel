@@ -9,7 +9,7 @@ task :scrape => :environment do
   proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
 
   # For each record in SkuUrl where url is not nil, scrape the url
-	SkuUrl.where.not(url: !nil).shuffle.each do |s|
+	SkuUrl.where.not(url: nil).where.not(url: 'Not Found').distinct.shuffle.each do |s|
     url = s.url
     puts 'Scraping ' + url
 		status = ":FAIL   -   "	# Used as the default
@@ -147,7 +147,11 @@ task :search_skus => :environment do
         puts s.manuf + ' -- ' + s.sku + ': ' + url
         new_records += 1
       end
-      if new_records != 0 then s.destroy end
+      if new_records != 0
+        s.destroy
+      else
+        s.url = 'Not Found'
+      end
     end
   end
   puts 'Finished.'
