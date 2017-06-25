@@ -10,6 +10,7 @@ task :scrape => :environment do
 
   # For each record in SkuUrl where url is not nil, scrape the url
 	SkuUrl.where.not(url: !nil).shuffle.each do |s|
+    puts s.manuf + ' -- ' + s.sku
     url = s.url
 		status = ":FAIL   -   "	# Used as the default
 
@@ -92,12 +93,12 @@ task :scrape => :environment do
 			status = ":SUCCESS   -   " + 	status_count_success.to_s + "/" + (status_count_total+1).to_s + "\n"
 		end
 		status_count_total += 1
-		print status
+		puts status
 		rnd = rand(3..12)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
 	end
-  puts "done."
+  puts "Finished Scraping."
 end
 
 
