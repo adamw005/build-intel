@@ -172,10 +172,12 @@ task :search_skus => :environment do
     page = c.body_str
     html_doc = Nokogiri::HTML(page)
 
-    # For each Search Result, store that URL with Manufacturer and SKU, and if >0 URLs found destroy old record
+    # If redirect (meaning only 1 search result), use the redirect url as the product url
     if headers.location
-      s.url = headers.location
+      s.url = 'https://www.build.com' + headers.location.split(/\?/).first
       s.save
+      puts s.manuf + ' -- ' + s.sku + ': ' + s.url
+    # For each Search Result, store that URL with Manufacturer and SKU, and if >0 URLs found destroy old record
     else
       new_records = 0
       html_doc.css("a.product-link").each do |p|
