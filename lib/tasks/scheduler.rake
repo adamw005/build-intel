@@ -19,10 +19,10 @@ task :scrape => :environment do
 
     # Newer 'curb' instead of MetaInspector for use with Crawlera proxy
     c = Curl::Easy.new(url) do |curl|
-    curl.proxypwd = proxy_auth
-    curl.proxy_url = proxy
-    curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
-    curl.verbose = false
+      curl.proxypwd = proxy_auth
+      curl.proxy_url = proxy
+      curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
+      curl.verbose = false
     end
 
     c.perform
@@ -141,4 +141,30 @@ task :curbtest => :environment do
 
   c.perform
   puts c.body_str
+end
+
+
+
+
+task :search_skus => :environment do
+  proxy = "proxy.crawlera.com:8010"
+  proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
+
+  SkuUrl.where(url: nil).each do |s|
+    search_url = 'https://www.build.com/index.cfm?page=search%3Abrowse&term=' + s.manuf + '+' + s.sku
+
+    c = Curl::Easy.new(search_url) do |curl|
+      curl.proxypwd = proxy_auth
+      curl.proxy_url = proxy
+      curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
+      curl.verbose = false
+    end
+
+    c.perform
+    page = c.body_str
+
+		puts page
+    
+  end
+
 end

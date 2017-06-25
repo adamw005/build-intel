@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'metainspector'
 gem 'blazer'
 gem 'curb'
-# gem 'nokogiri'
+gem 'nokogiri'
 # gem 'useragents'
 # gem 'mechanize'
 # gem 'rest-client'
