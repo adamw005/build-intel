@@ -10,8 +10,8 @@ task :scrape => :environment do
 
   # For each record in SkuUrl where url is not nil, scrape the url
 	SkuUrl.where.not(url: !nil).shuffle.each do |s|
-    puts s.manuf + ' -- ' + s.sku
     url = s.url
+    puts 'Scraping ' + url
 		status = ":FAIL   -   "	# Used as the default
 
     # Create the request
@@ -101,25 +101,6 @@ task :scrape => :environment do
   puts "Finished Scraping."
 end
 
-
-desc "Schedule tasks"
-task :curbtest => :environment do
-  puts "Beginning test..."
-
-  url = "https://twitter.com"
-  proxy = "proxy.crawlera.com:8010"
-  proxy_auth = "83a17a4219d543ef8800965d4293ac5d"
-
-  c = Curl::Easy.new(url) do |curl|
-    curl.proxypwd = proxy_auth
-    curl.proxy_url = proxy
-    curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
-    curl.verbose = true
-  end
-
-  c.perform
-  puts c.body_str
-end
 
 
 
