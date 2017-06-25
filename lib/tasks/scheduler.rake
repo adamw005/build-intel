@@ -147,10 +147,12 @@ end
 
 
 task :search_skus => :environment do
+  puts "Starting.."
   proxy = "proxy.crawlera.com:8010"
   proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
 
   SkuUrl.where(url: nil).each do |s|
+    puts s.manuf + ' ' + s.sku
     search_url = 'https://www.build.com/index.cfm?page=search%3Abrowse&term=' + s.manuf + '+' + s.sku
 
     c = Curl::Easy.new(search_url) do |curl|
@@ -171,7 +173,7 @@ task :search_skus => :environment do
       puts s.manuf + ' -- ' + s.sku + ': ' + url
     end
     s.destroy
-
   end
+  puts 'Finished.'
 
 end
