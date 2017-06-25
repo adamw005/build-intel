@@ -94,7 +94,7 @@ task :scrape => :environment do
 		end
 		status_count_total += 1
 		puts status
-		rnd = rand(3..12)
+		rnd = rand(1..3)
 		puts "Pausing for " + rnd.to_s + " seconds."
 		sleep(rnd)
 	end
