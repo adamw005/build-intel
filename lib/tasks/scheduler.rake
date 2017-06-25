@@ -152,8 +152,8 @@ task :search_skus => :environment do
   proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
 
   SkuUrl.where(url: nil).each do |s|
-    puts 'https://www.build.com/index.cfm?page=search%3Abrowse&term=' + s.manuf + '+' + s.sku
     search_url = 'https://www.build.com/index.cfm?page=search%3Abrowse&term=' + s.manuf + '+' + s.sku
+    puts 'Search URL: ' + search_url
 
     c = Curl::Easy.new(search_url) do |curl|
       curl.proxypwd = proxy_auth
@@ -163,6 +163,10 @@ task :search_skus => :environment do
     end
 
     c.perform
+    puts c
+    # puts c.response
+    # puts c.header
+    # puts c.header['location']
     page = c.body_str
 
     html_doc = Nokogiri::HTML(page)
