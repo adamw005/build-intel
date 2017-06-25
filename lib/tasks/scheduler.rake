@@ -167,7 +167,7 @@ task :search_skus => :environment do
     # Perform the Request and parse the page with Nokogiri
     c.perform
     # puts '1: ' + c.header_str[location]
-    headers = HttpHeaders.new(header_str)
+    headers = HttpHeaders.new(c.header_str)
     puts headers.location
 
     # puts c.response
