@@ -164,7 +164,9 @@ task :search_skus => :environment do
     page = c.body_str
 
     html_doc = Nokogiri::HTML(page)
-    puts html_doc.css("a.url-product-link")
+    puts page
+    puts "........................................................"
+    puts html_doc.css("a.product-link")
 
   end
 
