@@ -1,6 +1,6 @@
 proxy = "proxy.crawlera.com:8010"
 proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
-s = SkuUrl.last
+s = SkuUrl.first
 search_url = 'https://www.build.com/index.cfm?page=search%3Abrowse&term=' + s.manuf + '+' + s.sku
 c = Curl::Easy.new(search_url) do |curl|
 curl.proxypwd = proxy_auth
@@ -14,7 +14,11 @@ puts headers.location
 
 
 
-
+SkuUrl.all.each do |s|
+s.destroy
+end
+SkuUrl.create(manuf: 'Waterstone', sku: '5600')
+SkuUrl.create(manuf: 'Waterstone', sku: '1100-C01')
 
 
 
