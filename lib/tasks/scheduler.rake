@@ -166,7 +166,7 @@ task :search_skus => :environment do
     html_doc = Nokogiri::HTML(page)
 
     html_doc.css("a.product-link").each do |p|
-      puts p["href"]
+      puts p["href"].split(/?/).first
     end
 
   end
