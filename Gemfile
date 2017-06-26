@@ -29,9 +29,9 @@ gem 'blazer'
 gem 'curb'
 gem 'nokogiri'
 gem 'http_headers'
-# gem 'useragents'
-# gem 'mechanize'
-# gem 'rest-client'
+
+gem 'sidekiq'
+gem 'sinatra'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

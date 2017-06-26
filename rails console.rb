@@ -22,6 +22,7 @@ SkuUrl.create(manuf: 'Waterstone', sku: '1100-C01')
 
 SkuUrl.where.not(url: nil).where.not(url: 'Not Found').count
 SkuUrl.where(url: 'Not Found').count
+SkuUrl.where(url: nil).count
 
 
 
