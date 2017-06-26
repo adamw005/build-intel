@@ -84,10 +84,8 @@ class ScrapeWorker
         rescue; end
         BuildFinish.create(f)
       end
-      status_count_success += 1
-      status = ":SUCCESS   -   " + 	status_count_success.to_s + "/" + (status_count_total+1).to_s + "\n"
+      status = ":SUCCESS   -   " + "\n"
     end
-    status_count_total += 1
     puts status
     rnd = rand(1..3)
     puts "Pausing for " + rnd.to_s + " seconds."
