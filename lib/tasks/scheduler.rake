@@ -11,7 +11,7 @@ end
 # TODO: Create a worker for this
 task :search_skus => :environment do
   SkuUrl.where(url: nil).each do |s|
-    SearchSkusWorker.perform_async(s)
+    SearchSkusWorker.perform_async(s.id)
   end
 
   # puts "Starting.."

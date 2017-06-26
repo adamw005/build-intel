@@ -2,7 +2,8 @@ class SearchSkusWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
 
-  def perform(s)
+  def perform(id)
+     s = SkuUrl.find(id)
     puts "Starting.."
     proxy = "proxy.crawlera.com:8010"
     proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
