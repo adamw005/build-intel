@@ -26,6 +26,19 @@ SkuUrl.where(url: nil).count
 
 
 
+SkuUrl.where.not(url: nil).where.not(url: 'Not Found').distinct.limit(200).shuffle.in_groups_of(100).each do |skus|
+urls = []
+skus.each do |s|
+urls.push(s.url)
+end
+urls.each do |url|
+puts url
+end
+end
+
+
+
+
 
 
 
