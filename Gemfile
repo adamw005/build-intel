@@ -32,6 +32,7 @@ gem 'http_headers'
 
 gem 'sidekiq'
 gem 'sinatra'
+gem 'sidekiq-failures'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -9,7 +9,7 @@ task :scrape => :environment do
   end
 end
 
-
+# TODO: use `in_groups_of` for this as well
 task :search_skus => :environment do
   SkuUrl.where(url: nil).each do |s|
     SearchSkusWorker.perform_async(s.id)
