@@ -19,6 +19,27 @@ class ScrapeWorker
 
       # Perform request and get body
       c.perform
+
+      # Pull out headers
+      http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
+      http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
+
+      # Check for Crawlera 503 error, and if exist try 5 times (this could be prettier)
+      if http_headers['X-Crawlera-Next-Request-In']
+        # Rerun the request up to 4 more times if 503 error
+        4.times do
+          # Perform request and get body
+          c.perform
+          # Pull out headers
+          http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
+          http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
+          # If no more 503, break out of loop
+          if !http_headers['X-Crawlera-Next-Request-In'] then break end
+        end
+
+      end
+
+      # Pull out body
       page = c.body_str
 
       # Pull out json variable from page

@@ -12,6 +12,8 @@ c.perform
 headers = HttpHeaders.new(c.header_str)
 puts headers.location
 
+http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
+http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
 
 
 SkuUrl.all.each do |s|
