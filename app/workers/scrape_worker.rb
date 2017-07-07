@@ -16,7 +16,8 @@ class ScrapeWorker
         curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
         curl.verbose = false
       end
-
+      # Attempting to fix Curl::Err::PartialFileError: Transferred a partial file
+      c.ignore_content_length = true
       # Perform request and get body
       c.perform
 
