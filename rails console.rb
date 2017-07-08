@@ -1,3 +1,6 @@
+RestClient.post "https://api:key-f555382b02700bc449dd1ef9da9aabf0" "@api.mailgun.net/v3/sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org/messages", :from => "Mailgun Sandbox <postmaster@sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org>", :to => "Adam <adamwinn99@gmail.com>", :subject => "Hello Adam", :text => "Congratulations Adam, you just sent an email with Mailgun!  You are truly awesome!" 
+
+
 proxy = "proxy.crawlera.com:8010"
 proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
 s = SkuUrl.first

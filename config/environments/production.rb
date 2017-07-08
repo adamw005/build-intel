@@ -1,17 +1,17 @@
 Rails.application.configure do
-   
+
   # devise says to define default url
   config.action_mailer.default_url_options = { :host => 'secure.simple-milia-app.com', :protocol => 'https' }
 
   ActionMailer::Base.delivery_method = :smtp
 
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'smtp.mailgun.org',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
+    :user_name      => 'postmaster@sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org',
+    :password       => 'da92cc006a725860bddb738983ae19e6',
+    :domain         => 'sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org'
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
