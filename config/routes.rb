@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "home/welcome", :as => :welcome
   resources :members
   get 'home/index'
 

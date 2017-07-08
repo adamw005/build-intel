@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '0aac97cc52ba1a12104df6182917ee3df101ffd7f0b32b48285ed8c74386bbd82dfe03a10a85440de301df94996d1c5ace5394378b6dd61742de623253f7f8c7'
+  config.pepper = '0aac97cc52ba1a12104df6182917ee3df101ffd7f0b32b48285ed8c74386bbd82dfe03a10a85440de301df94996d1c5ace5394378b6dd61742de623253f7f8c7'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -127,7 +127,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [:email]
+  config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
@@ -150,7 +150,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
