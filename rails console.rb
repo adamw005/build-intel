@@ -16,6 +16,33 @@ http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
 http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
 
 
+if http_response.include?('20')
+# Rerun the request up to 4 more times if 503 error
+4.times do
+puts 'working'
+# Perform request and get body
+c.perform
+# Pull out headers
+http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
+http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
+# If no more 503, break out of loop
+if !http_headers['X-Crawlera-Next-Request-In'] || !http_response.include?('20') then break end
+end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SkuUrl.all.each do |s|
 s.destroy
 end

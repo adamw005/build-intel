@@ -27,7 +27,7 @@ class ScrapeWorker
       http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
 
       # Check for Crawlera 503 error or 50X errors, and if exist try 5 times (this could be prettier)
-      if http_headers['X-Crawlera-Next-Request-In'] || http_response.include?('50')
+      if http_response.include?('50')
         # Rerun the request up to 4 more times if 503 error
         4.times do
           # Perform request and get body
@@ -36,9 +36,8 @@ class ScrapeWorker
           http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
           http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
           # If no more 503, break out of loop
-          if !http_headers['X-Crawlera-Next-Request-In'] || !http_response.include?('50') then break end
+          if !http_response.include?('50') then break end
         end
-
       end
 
       # Pull out body
