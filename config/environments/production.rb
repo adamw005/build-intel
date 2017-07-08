@@ -7,7 +7,7 @@ Rails.application.configure do
 
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.mailgun.org',
-    :port           => '25',
+    :port           => '465',
     :authentication => :plain,
     :user_name      => 'postmaster',
     :password       => 'da92cc006a725860bddb738983ae19e6',
