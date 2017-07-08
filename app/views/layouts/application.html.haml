@@ -10,7 +10,7 @@
     #container
       #header
         %h1
-          = link_to @org_name, "/"
+          = link_to @org_name, "Competitor Pricing"
         #user-navigation
           %ul.wat-cf
             %li
@@ -38,9 +38,5 @@
         #main
           = yield
           #footer
-            .block
-              %p
-                Copyright © #{Time.now.year}
-                Simple Milia App
         #sidebar
           = yield :sidebar
