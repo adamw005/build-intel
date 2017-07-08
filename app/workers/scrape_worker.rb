@@ -18,6 +18,7 @@ class ScrapeWorker
       end
       # Attempting to fix Curl::Err::PartialFileError: Transferred a partial file
       c.ignore_content_length = true
+      c.encoding = 'gzip'
       # Perform request and get body
       c.perform
 
@@ -25,8 +26,8 @@ class ScrapeWorker
       http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
       http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
 
-      # Check for Crawlera 503 error, and if exist try 5 times (this could be prettier)
-      if http_headers['X-Crawlera-Next-Request-In']
+      # Check for Crawlera 503 error or 50X errors, and if exist try 5 times (this could be prettier)
+      if http_headers['X-Crawlera-Next-Request-In'] || http_response.include? '50'
         # Rerun the request up to 4 more times if 503 error
         4.times do
           # Perform request and get body
@@ -35,7 +36,7 @@ class ScrapeWorker
           http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
           http_headers = Hash[http_headers.flat_map{ |s| s.scan(/^(\S+): (.+)/) }]
           # If no more 503, break out of loop
-          if !http_headers['X-Crawlera-Next-Request-In'] then break end
+          if !http_headers['X-Crawlera-Next-Request-In'] || !http_response.include? '50' then break end
         end
 
       end
