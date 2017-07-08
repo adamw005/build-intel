@@ -26,13 +26,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'metainspector'
 gem 'blazer'
-gem 'curb'
+gem 'curb', group: :production
 gem 'nokogiri'
 gem 'http_headers'
 
 gem 'sidekiq'
 gem 'sinatra'
 gem 'sidekiq-failures'
+gem 'devise', '~>3.2'
+gem 'milia', '~>1.0', :github => 'jekuno/milia', :branch => 'rails4-support'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -55,3 +57,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'recaptcha', require: 'recaptcha/rails'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
