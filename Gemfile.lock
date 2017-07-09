@@ -273,6 +273,7 @@ DEPENDENCIES
   activerecord-session_store!
   blazer
   byebug
+  chartkick
   coffee-rails (~> 4.1.0)
   curb
   devise (~> 3.2)

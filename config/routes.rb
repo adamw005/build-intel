@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboard/show'
+
   get "home/welcome", :as => :welcome
   resources :members
   get 'home/index'
