@@ -20,7 +20,9 @@ class SearchSkusWorker
         curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
         curl.verbose = false
       end
-
+      # Attempting to fix Curl::Err::PartialFileError: Transferred a partial file
+      c.ignore_content_length = true
+      c.encoding = 'gzip'
       # Perform the Request, parse the headers, and parse the page
       c.perform
       # Parse the headers with HttpHeaders

@@ -9,7 +9,6 @@ task :scrape => :environment do
   end
 end
 
-# TODO: use `in_groups_of` for this as well
 task :search_skus => :environment do
   SkuUrl.where(url: nil).shuffle.in_groups_of(100, false).each do |su|
     ids = []
