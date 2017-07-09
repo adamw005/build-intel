@@ -1,4 +1,6 @@
 class Tenant < ActiveRecord::Base
+  has_many :sku_urls
+  has_many :build_finishes
 
    acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
@@ -9,9 +11,9 @@ class Tenant < ActiveRecord::Base
 
       if new_signups_not_permitted?(coupon_params)
 
-        raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time" 
+        raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time"
 
-      else 
+      else
         tenant.save    # create the tenant
       end
       return tenant
@@ -43,5 +45,5 @@ class Tenant < ActiveRecord::Base
       #
     end
 
-   
+
 end
