@@ -1,3 +1,11 @@
+urls = []
+# SkuUrl.where.not(url: nil).where.not(url: 'Not Found').distinct.shuffle.in_groups_of(100, false).each do |skus|
+SkuUrl.select('distinct url').where.not(url: nil).where.not(url: 'Not Found').shuffle.in_groups_of(100, false).each do |skus|
+skus.each do |s|
+urls.push(s.url)
+end
+end
+
 SkuUrl.where.not(url: nil).where.not(url: 'Not Found').distinct.shuffle.in_groups_of(100, false).each do |skus|
 @ss += 1
 end

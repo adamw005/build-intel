@@ -11,7 +11,11 @@ end
 
 # TODO: use `in_groups_of` for this as well
 task :search_skus => :environment do
-  SkuUrl.where(url: nil).each do |s|
-    SearchSkusWorker.perform_async(s.id)
+  SkuUrl.where(url: nil).shuffle.in_groups_of(100, false).each do |su|
+    ids = []
+    su.each do |s|
+      ids.push(s.id)
+    end
+    SearchSkusWorker.perform_async(ids)
   end
 end
