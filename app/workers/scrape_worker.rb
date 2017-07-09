@@ -6,11 +6,14 @@ class ScrapeWorker
     proxy = "proxy.crawlera.com:8010"
     proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
     urls.each do |s|
-      puts 'Scraping ' + s.url
+      url = s[0]
+      tenant_id = s[1]
+
+      puts 'Scraping ' + url
       status = ":FAIL   -   "	# Used as the default
 
       # Create the request
-      c = Curl::Easy.new(s.url) do |curl|
+      c = Curl::Easy.new(url) do |curl|
         curl.proxypwd = proxy_auth
         curl.proxy_url = proxy
         curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
@@ -53,7 +56,7 @@ class ScrapeWorker
         j = JSON.parse(subs)
         j["finishes"].each do |f|
           begin
-            f["tenant_id"] = s.tenant_id
+            f["tenant_id"] = tenant_id
           rescue; end
           begin
             f["images_defaultImg"] = f["images"]["defaultImg"]
