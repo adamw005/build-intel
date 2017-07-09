@@ -42,7 +42,7 @@ class SearchSkusWorker
         new_records = 0
         html_doc.css("a.product-link").each do |p|
           url = 'https://www.build.com' + p["href"].split(/\?/).first
-          SkuUrl.create(manuf: s.manuf, sku: s.sku, url: url)
+          SkuUrl.create(manuf: s.manuf, sku: s.sku, url: url, tenant_id: s.tenant_id)
           new_records += 1
         end
         if new_records != 0

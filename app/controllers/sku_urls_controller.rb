@@ -16,7 +16,7 @@ class SkuUrlsController < ApplicationController
 	private
 
 	def sku_url_params
-		params.require(:sku_url).permit(:manuf, :sku, :url)
+		params.require(:sku_url).permit(:manuf, :sku, :url, :tenant_id)
 	end
 
 
