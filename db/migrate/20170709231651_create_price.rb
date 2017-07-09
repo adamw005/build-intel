@@ -6,7 +6,9 @@ class CreatePrice < ActiveRecord::Migration
       t.string :sku
       t.decimal :price
       t.integer :quantity
-      t.reference :tenant, index: true, foreign_key: true
+      t.references :tenant, index: true, foreign_key: true
+
+      t.timestamps
     end
   end
 end
