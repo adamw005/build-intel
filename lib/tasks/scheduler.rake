@@ -1,6 +1,6 @@
 desc "Schedule tasks"
 task :scrape => :environment do
-  SkuUrl.where.not(url: nil).where.not(url: 'Not Found').distinct.shuffle.in_groups_of(100, false).each do |skus|
+  SkuUrl.select('distinct url').where.not(url: nil).where.not(url: 'Not Found').shuffle.in_groups_of(100, false).each do |skus|
     urls = []
     skus.each do |s|
       urls.push(s.url)
