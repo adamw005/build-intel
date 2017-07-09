@@ -112,6 +112,7 @@ class ScrapeWorker
           begin
             f.delete("iterator")
           rescue; end
+          Price.create(site_name: "Build.com", brand: f["manufacturer"], sku: f["sku"], price: f["price"], quantity: f["stock"], tenant_id: f["tenant_id"])
           BuildFinish.create(f)
         end
         status = ":SUCCESS   -   " + "\n"
