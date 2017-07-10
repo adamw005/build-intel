@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   get 'dashboard/brand_column', as: 'dashboard_brand_column'
   get 'dashboard/scrape_count', as: 'dashboard_scrape_count'
 
+  # Uploads Routes
+  get 'uploads/new'
+  post 'uploads/create'
+
 end

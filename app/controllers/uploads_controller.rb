@@ -6,15 +6,10 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new upload_params
     if @upload.save
-      redirect_to projects_path(@upload.project_id)
+      redirect_to root
     else
       render :action => 'new'
     end
-  end
-
-  def show
-    @upload = Upload.find(params[:hashid])
-    redirect_to @upload.file.url
   end
 
 	private
