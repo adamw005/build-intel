@@ -25,4 +25,8 @@ Rails.application.routes.draw do
 
 	require 'sidekiq/web'
 	mount Sidekiq::Web => '/sidekiq'
+
+  # Chartkick Dashboards for AJAX
+  get 'dashboard/three_line', as: 'dashboard_three_line'
+  get 'dashboard/brand_column', as: 'dashboard_brand_column'
 end

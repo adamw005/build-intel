@@ -1,3 +1,4 @@
-= line_chart Price.where("sku in ('RP84382RB','5600-3-AMB','5600-3-01')").group(:sku).group_by_day(:created_at).average(:price)
+-# TODO: Change all of Price. to @price. and add to controller (so only seeing Tenant's data)
+= line_chart dashboard_three_line_path
 
-= column_chart Price.group(:brand).count
+= column_chart dashboard_brand_column_path
