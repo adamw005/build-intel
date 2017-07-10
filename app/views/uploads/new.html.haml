@@ -1,0 +1,7 @@
+= form_for(@friend, multipart: true) do |f|
+  %input{:name => "user_id", :type => "hidden", :value => current_user} /
+  .field
+    = f.label :csv_file
+    = f.file_field :csv_file
+  .actions
+    = f.submit 'Upload'

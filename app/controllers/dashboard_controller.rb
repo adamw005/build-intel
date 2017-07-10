@@ -3,6 +3,10 @@ class DashboardController < ApplicationController
     # TODO: show content only for User's Tenant (waiting on bug fix)
   end
 
+  # def upload
+  #   SkuUrl.create(manuf: , sku:, url: nil, tenant_id:)
+  # end
+
 
   # Dashboard for AJAX (also add route)
   def three_line

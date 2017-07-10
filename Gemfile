@@ -41,6 +41,8 @@ gem 'web-app-theme', :git => 'git://github.com/dsaronin/web-app-theme.git'
 gem 'milia', '~>1.0', :github => 'jekuno/milia', :branch => 'rails4-support'
 gem 'chartkick'
 gem 'groupdate'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
