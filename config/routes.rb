@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   # Chartkick Dashboards for AJAX
   get 'dashboard/three_line', as: 'dashboard_three_line'
   get 'dashboard/brand_column', as: 'dashboard_brand_column'
+  get 'dashboard/scrape_count', as: 'dashboard_scrape_count'
+
 end
