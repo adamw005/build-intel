@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   get 'dashboard/scrape_count', as: 'dashboard_scrape_count'
 
   # Uploads Routes
-  get 'uploads/new'
-  post 'uploads/create'
+  resources :uploads
 
 end
