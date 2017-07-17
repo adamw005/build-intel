@@ -14,7 +14,7 @@ class DashboardController < ApplicationController
     render json: Price.group_by_day(:created_at).count
   end
   def price_popup
-    sku = params[:sku]
-    render json: Price.where("sku in (#{sku})").group(:sku).group_by_day(:created_at).average(:price).chart_json
+    find_sku = params[:sku].to_s
+    render json: Price.where("sku in ('#{find_sku}')").group(:sku).group_by_day(:created_at).average(:price).chart_json
   end
 end
