@@ -8,9 +8,9 @@
 = line_chart dashboard_scrape_count_path
 
 %table{:style => "width:100%"}
-- BuildFinish.distinct(:sku).limit(10).each do |b|
-    %tr
-      %td= b.manufacturer
-      %td= b.sku
-      %td= b.title
-      %td= b.price
+  - BuildFinish.distinct(:sku).limit(10).each do |b|
+      %tr
+        %td= b.manufacturer
+        %td= b.sku
+        %td= b.title
+        %td= b.price
