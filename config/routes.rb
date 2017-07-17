@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'dashboard/three_line', as: 'dashboard_three_line'
   get 'dashboard/brand_column', as: 'dashboard_brand_column'
   get 'dashboard/scrape_count', as: 'dashboard_scrape_count'
+  get 'dashboard/price_popup', as: 'dashboard_price_popup'
 
   # Uploads Routes
   resources :uploads
