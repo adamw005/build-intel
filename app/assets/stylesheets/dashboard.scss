@@ -1,3 +1,13 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table.dashboard td.sku img {
+    display: none;
+    position: absolute;
+    left: 50px;
+    top: 5px;
+}
+table.dashboard a {
+    display: inline-block;
+    position: relative;
+}

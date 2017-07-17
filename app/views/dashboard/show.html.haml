@@ -7,7 +7,7 @@
 
 = line_chart dashboard_scrape_count_path
 
-%table{:style => "width:100%"}
+%table{:style => "width:100%", :class => "dashboard"}
   %tr
     %th Brand
     %th SKU
@@ -16,7 +16,9 @@
   - BuildFinish.distinct(:sku).limit(10).each do |b|
     %tr
       %td= b.manufacturer
-      %td= b.sku
+      %td.sku
+        %a{:href => "#"}
+          %img{:src => "http://via.placeholder.com/210x90"}
+          = b.sku
       %td= link_to b.title, 'https://www.build.com' + b.productLink, target: :_blank
       %td= number_to_currency(b.price)
- 
