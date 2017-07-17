@@ -21,7 +21,7 @@
       %td.sku
         %a
           .popup_chart= line_chart dashboard_price_popup_path(#{b.sku}), width: "210px", height: "90px"
-          %img{:src => "http://via.placeholder.com/210x90/e8117f/ffffff"}
+          
           = b.sku
       %td= link_to b.title, 'https://www.build.com' + b.productLink, target: :_blank
       %td= number_to_currency(b.price)
