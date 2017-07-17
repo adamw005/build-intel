@@ -6,6 +6,7 @@ table.dashboard td.sku img {
     position: absolute;
     left: 50px;
     top: 5px;
+    z-index: 1;
 }
 table.dashboard a {
     display: inline-block;
