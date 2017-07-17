@@ -4,6 +4,6 @@ $(document).ready(function () {
         $(this).find(".popup_chart").css("display", "inline-block"); // show current hover image
     })
     $(".dashboard a").mouseout(function () {
-        $(".dashboard a .popup_chart").css("display", "none"); // hide all product images
+        $(".dashboard a .popup_chart").css("display", "none").css("transition-duration", "2s"); // hide all product images
     })
 });
