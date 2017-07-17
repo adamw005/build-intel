@@ -6,10 +6,24 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new upload_params
     if @upload.save
-      redirect_to root
+      redirect_to root_path
     else
       render :action => 'new'
     end
+
+
+
+
+    # TODO NEXT: Parse through CSV file and save to SkuUrl
+    # CSV.new(open(path_to_s3)).each do |row|
+    #   ...
+    # end
+    #
+    #
+    #
+    #
+    #
+
   end
 
 	private

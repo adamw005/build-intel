@@ -1,5 +1,5 @@
 = form_for(@upload, multipart: true) do |f|
-  %input{:name => "user_id", :type => "hidden", :value => current_user.id} /
+  %input{:name => "user_id", :type => "hidden", :value => current_user.id}
   .field
     = f.label :csv_file
     = f.file_field :csv_file
