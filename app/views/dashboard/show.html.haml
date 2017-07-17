@@ -17,5 +17,5 @@
     %tr
       %td= b.manufacturer
       %td= b.sku
-      %td= link_to 'https://www.build.com' + b.title, b.title, target: :_blank
+      %td= link_to b.title, 'https://www.build.com' + b.productLink, target: :_blank
       %td= number_to_currency(b.price)
