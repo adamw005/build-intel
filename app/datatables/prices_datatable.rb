@@ -1,4 +1,4 @@
-class PriceDatatable < AjaxDatatablesRails::Base
+class PricesDatatable < AjaxDatatablesRails::Base
 
   def view_columns
     @view_columns ||= {
