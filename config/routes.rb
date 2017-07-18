@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get 'dashboard/scrape_count', as: 'dashboard_scrape_count'
   get 'dashboard/price_popup/:sku', to: 'dashboard#price_popup', as: 'dashboard_price_popup'
 
-  get 'price/index', as: 'prices'
+  get 'prices/index', as: 'prices'
 
   # Uploads Routes
   resources :uploads
