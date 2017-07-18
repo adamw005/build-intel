@@ -24,3 +24,12 @@
           = b.sku
       %td= link_to b.title, 'https://www.build.com' + b.productLink, target: :_blank
       %td= number_to_currency(b.price)
+
+
+%table#users-table{:data-source => "#{prices_path(format: :json)}"}
+%thead
+  %tr
+    %th First Name
+    %th Last Name
+    %th Brief Bio
+%tbody
