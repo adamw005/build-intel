@@ -1,4 +1,4 @@
-class PriceController < ApplicationController
+class PricesController < ApplicationController
 
   def index
     respond_to do |format|
