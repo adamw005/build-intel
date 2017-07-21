@@ -26,8 +26,8 @@
       %td= number_to_currency(b.price)
 
 
-%table#users-table>
-, data-source="#{prices_path(format: :json)}"&gt;
+%table#prices-table>
+, data-source="#{prices_path(format: :json)}">
 -# %table#prices-table{:data-source => "#{prices_path(format: :json)}"}
 %thead
   %tr
