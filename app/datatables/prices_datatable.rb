@@ -4,7 +4,7 @@ class PricesDatatable < AjaxDatatablesRails::Base
     @view_columns ||= {
       manufacturer: {source: 'Price.manufacturer' },
       sku: {source: 'Price.sku' },
-      title: {source: 'Price.title' },
+      # title: {source: 'Price.title' },
       price: {source: 'Price.price' }
     }
   end

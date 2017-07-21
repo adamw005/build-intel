@@ -8,9 +8,9 @@ $ ->
     ajax: $('#prices-table').data('source')
     pagingType: 'full_numbers'
     columns: [
-      {data: 'manufacturer'}
+      {data: 'brand'}
       {data: 'sku'}
-      {data: 'title'}
+      # {data: 'title'}
       {data: 'price'}
     ]
     # pagingType is optional, if you want full pagination controls.
