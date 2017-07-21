@@ -2,7 +2,7 @@ class PricesDatatable < AjaxDatatablesRails::Base
 
   def view_columns
     @view_columns ||= {
-      manufacturer: {source: 'Price.manufacturer' },
+      manufacturer: {source: 'Price.brand' },
       sku: {source: 'Price.sku' },
       # title: {source: 'Price.title' },
       price: {source: 'Price.price' }
