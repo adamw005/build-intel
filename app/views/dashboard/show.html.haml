@@ -1,7 +1,5 @@
 -# TODO: Change all of Price. to @price. and add to controller (so only seeing Tenant's data)
 
-= prices_path(format: :json)
-
 -# http://chartkick.com/ for documentation, the paths are to use AJAX
 = line_chart dashboard_three_line_path
 
@@ -28,7 +26,9 @@
       %td= number_to_currency(b.price)
 
 
-%table#prices-table{:data-source => "#{prices_path(format: :json)}"}
+%table#users-table>
+, data-source="#{prices_path(format: :json)}"&gt;
+-# %table#prices-table{:data-source => "#{prices_path(format: :json)}"}
 %thead
   %tr
     %th Brand
