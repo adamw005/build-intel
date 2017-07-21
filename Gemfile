@@ -44,7 +44,7 @@ gem 'groupdate'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 gem 'jquery-datatables-rails'
-gem 'ajax-datatables-rails'
+gem 'ajax-datatables-rails', "0.3.1"
 
 
 # Use ActiveModel has_secure_password
