@@ -10,7 +10,6 @@ $ ->
     columns: [
       {data: 'brand'}
       {data: 'sku'}
-      # {data: 'title'}
       {data: 'price'}
     ]
     # pagingType is optional, if you want full pagination controls.

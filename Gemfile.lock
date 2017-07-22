@@ -312,7 +312,7 @@ DEPENDENCIES
   html2haml!
   http_headers
   jbuilder (~> 2.0)
-  jquery-datatables-rails
+  jquery-datatables-rails (~> 3.4.0)
   jquery-rails
   metainspector
   milia (~> 1.0)!
