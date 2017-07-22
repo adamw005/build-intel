@@ -1,3 +1,12 @@
+%table#prices-table{"data-source" => prices_path(format: :json)}
+%thead
+  %tr
+    %th Brand
+    %th SKU
+    -# %th Title
+    %th Price
+%tbody
+
 -# TODO: Change all of Price. to @price. and add to controller (so only seeing Tenant's data)
 
 -# http://chartkick.com/ for documentation, the paths are to use AJAX
@@ -24,13 +33,3 @@
           = b.sku
       %td= link_to b.title, 'https://www.build.com' + b.productLink, target: :_blank
       %td= number_to_currency(b.price)
-
-
-%table#prices-table{"data-source" => prices_path(format: :json)}
-%thead
-  %tr
-    %th Brand
-    %th SKU
-    -# %th Title
-    %th Price
-%tbody
