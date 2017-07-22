@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $('#prices-table').dataTable
+    autoWidth: false,
     processing: true
     serverSide: true
     ajax: $('#prices-table').data('source')
