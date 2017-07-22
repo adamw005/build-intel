@@ -1,3 +1,6 @@
+%link{:rel => :stylesheet, :type => :"text/css", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}
+%link{:rel => :stylesheet, :type => :"text/css", :href => "https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"}
+
 %table#prices-table{"data-source" => prices_path(format: :json), :class => "table table-striped table-bordered", :cellspacing => "0", :width => "100%"}
 %thead
   %tr
