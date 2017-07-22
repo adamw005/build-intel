@@ -1,5 +1,19 @@
 class PricesDatatable < AjaxDatatablesRails::Base
 
+  include AjaxDatatablesRails::Extensions::Kaminari
+
+  def sortable_columns
+    @sortable_columns ||= %w(Price.brand Price.sku Price.price)
+    # this is equal to:
+    # @sortable_columns ||= ['User.first_name', 'User.last_name', 'User.bio']
+  end
+
+  def searchable_columns
+    @searchable_columns ||= %w(Price.brand Price.sku Price.price)
+    # this is equal to:
+    # @searchable_columns ||= ['User.first_name', 'User.last_name', 'User.bio']
+  end
+
   def view_columns
     @view_columns ||= {
       brand: {source: 'Price.brand' },
