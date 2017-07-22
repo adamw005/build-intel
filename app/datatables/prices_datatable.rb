@@ -26,10 +26,10 @@ class PricesDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-        brand: record.brand,
-        sku: record.sku,
+        record.brand,
+        record.sku,
         # title: record.title,
-        rice: record.price
+        record.price
       ]
     end
   end
