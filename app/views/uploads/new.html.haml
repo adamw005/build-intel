@@ -1,3 +1,5 @@
+= Tenant.current_tenant.id
+
 = form_for(@upload, multipart: true) do |f|
   %input{:name => "upload[user_id]", :type => "hidden", :value => current_user.id}
   .field
