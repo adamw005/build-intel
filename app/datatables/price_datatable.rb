@@ -25,9 +25,6 @@ class PriceDatatable < AjaxDatatablesRails::Base
   def get_raw_records
     # insert query here
     Price.all
-    
-    rescue ExceptionName
-    end
   end
 
   # ==== These methods represent the basic operations to perform on records
