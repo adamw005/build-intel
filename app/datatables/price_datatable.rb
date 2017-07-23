@@ -6,8 +6,9 @@ class PriceDatatable < AjaxDatatablesRails::Base
     @view_columns ||= {
       brand: { source: "Price.brand" },
       sku: { source: "Price.sku" },
-      avg_price: { source: "Price.avg_price" },
-      current_price: { source: "Price.current_price" }
+      price: { source: "Price.price" }
+      # avg_price: { source: "Price.avg_price" },
+      # current_price: { source: "Price.current_price" }
     }
   end
 
@@ -16,8 +17,9 @@ class PriceDatatable < AjaxDatatablesRails::Base
       {
         brand: record.brand,
         sku: record.sku,
-        avg_price: record.avg_price,
-        current_price: record.current_price
+        price: record.price
+        # avg_price: record.avg_price,
+        # current_price: record.current_price
       }
     end
   end
@@ -26,22 +28,21 @@ class PriceDatatable < AjaxDatatablesRails::Base
 
   def get_raw_records
     # insert query here
-    # Price.all
-    sql="
-    select a.brand, a.sku, avg(a.price) as avg_price, b.current_price
-    from prices a
-    left join (
-    select x.brand, x.sku, x.price as current_price
-    from prices x
-    left join prices y
-     on x.brand = y.brand and x.sku = y.sku and x.created_at < y.created_at
-    where y.created_at IS NULL
-    ) b
-    on a.brand = b.brand and a.sku = b.sku
-    group by 1,2,4
-    "
-    Price.select("*").from("(#{sql}) as subquery")
-
+    Price.all
+    # sql="
+    # select a.brand, a.sku, avg(a.price) as avg_price, b.current_price
+    # from prices a
+    # left join (
+    # select x.brand, x.sku, x.price as current_price
+    # from prices x
+    # left join prices y
+    #  on x.brand = y.brand and x.sku = y.sku and x.created_at < y.created_at
+    # where y.created_at IS NULL
+    # ) b
+    # on a.brand = b.brand and a.sku = b.sku
+    # group by 1,2,4
+    # "
+    # Price.select("*").from("(#{sql}) as subquery")
 
   end
 

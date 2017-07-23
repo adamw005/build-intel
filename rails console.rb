@@ -15,8 +15,9 @@ where y.created_at IS NULL
 on a.brand = b.brand and a.sku = b.sku
 group by 1,2,4
 "
-Price.select("*").from("(#{sql}) as subquery")
-
+x = Price.select("*").from("(#{sql}) as subquery")
+x.first
+x.first.avg_price
 
 
 select.('a.brand, a.sku, avg(a.price) as avg_price, b.current_price').from('prices a').joins('left join (
