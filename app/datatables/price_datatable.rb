@@ -4,10 +4,10 @@ class PriceDatatable < AjaxDatatablesRails::Base
     # Declare strings in this format: ModelName.column_name
     # or in aliased_join_table.column_name format
     @view_columns ||= {
-      brand: { source: "Price.brand" },
-      sku: { source: "Price.sku" },
-      avg_price: { source: "Price.avg_price" },
-      current_price: { source: "Price.current_price" }
+      brand: { source: "a.brand" },
+      sku: { source: "a.sku" },
+      avg_price: { source: "a.avg_price" },
+      current_price: { source: "a.current_price" }
     }
   end
 
