@@ -6,7 +6,8 @@ class PriceDatatable < AjaxDatatablesRails::Base
     @view_columns ||= {
       brand: { source: "Price.brand" },
       sku: { source: "Price.sku" },
-      price: { source: "Price.price" }
+      avg_price: { source: "Price.avg_price" },
+      current_price: { source: "Price.current_price" }
     }
   end
 
@@ -15,7 +16,8 @@ class PriceDatatable < AjaxDatatablesRails::Base
       {
         brand: record.brand,
         sku: record.sku,
-        price: record.price
+        avg_price: record.avg_price,
+        current_price: record.current_price
       }
     end
   end

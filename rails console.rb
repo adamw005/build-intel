@@ -2,7 +2,9 @@
 Price.select("brand, sku, avg(price) as price").group("brand").group("sku")
 .joins("left join prices b on prices.brand = b.brand and prices.sku = b.sku").select("brand, sku, price")
 
-"
+Price.select("*").from("(#{sql}) as subquery")
+
+sql="
 select a.brand, a.sku, avg(a.price) as avg_price, b.current_price
 from prices a
 left join (
@@ -15,6 +17,15 @@ where y.created_at IS NULL
 on a.brand = b.brand and a.sku = b.sku
 group by 1,2,4
 "
+
+
+select.('a.brand, a.sku, avg(a.price) as avg_price, b.current_price').from('prices a').joins('left join (
+select x.brand, x.sku, x.price as current_price
+from prices x
+left join prices y on x.brand = y.brand and x.sku = y.sku and x.created_at < y.created_at)
+where y.created_at IS NULL
+) b on a.brand = b.brand and a.sku = b.sku
+group by 1,2,4')
 
 
 urls = []
