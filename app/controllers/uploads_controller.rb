@@ -11,7 +11,7 @@ class UploadsController < ApplicationController
       render :action => 'new'
     end
 
-
+    url = 'https:' + @upload.csv_file.url
 
 
     # TODO NEXT: Parse through CSV file and save to SkuUrl
