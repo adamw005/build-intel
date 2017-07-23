@@ -1,4 +1,9 @@
-= 'x: ' + Tenant.current_tenant_id
+%p 1
+= current_user.current_tenant
+%p 2
+= current_tenant
+%p 3
+= current_user.tenant_id
 
 %link{:rel => :stylesheet, :type => :"text/css", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}
 %link{:rel => :stylesheet, :type => :"text/css", :href => "https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"}
