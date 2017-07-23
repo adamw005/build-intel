@@ -11,18 +11,12 @@ class UploadsController < ApplicationController
       render :action => 'new'
     end
 
-    url = 'https:' + @upload.csv_file.url
-
+    path_to_s3 = 'https:' + @upload.csv_file.url
 
     # TODO NEXT: Parse through CSV file and save to SkuUrl
     # CSV.new(open(path_to_s3)).each do |row|
-    #   ...
+    #   SkuUrl.create(manuf: row[0], sku: row[1], tenant_id: )
     # end
-    #
-    #
-    #
-    #
-    #
 
   end
 
