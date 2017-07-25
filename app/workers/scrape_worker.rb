@@ -54,6 +54,7 @@ class ScrapeWorker
       # If json variable exists, add it to database
       unless subs.nil?
         j = JSON.parse(subs)
+        # Multiple SKUs can be on one page
         j["finishes"].each do |f|
           begin
             f["tenant_id"] = tenant_id
