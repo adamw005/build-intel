@@ -1,4 +1,10 @@
 class PriceDatatable < AjaxDatatablesRails::Base
+  # ...
+  def_delegators(
+    :@view,
+    :link_to, :dashboard_price_popup_path,
+    :number_to_currency
+  )
 
   def view_columns
     # Declare strings in this format: ModelName.column_name
@@ -6,9 +12,11 @@ class PriceDatatable < AjaxDatatablesRails::Base
     @view_columns ||= {
       brand: { source: "Price.brand" },
       sku: { source: "Price.sku" },
-      price: { source: "Price.price" }
-      # avg_price: { source: "Price.avg_price" },
-      # current_price: { source: "Price.current_price" }
+
+      # title: { source: "Price.title" },
+      # price: { source: "Price.price" }
+
+      avg_price: { source: "Price.avg_price" }
     }
   end
 
@@ -16,10 +24,20 @@ class PriceDatatable < AjaxDatatablesRails::Base
     records.map do |record|
       {
         brand: record.brand,
-        sku: record.sku,
-        price: record.price
-        # avg_price: record.avg_price,
-        # current_price: record.current_price
+        sku: link_to(
+          record.sku,
+          dashboard_price_popup_path(record.sku),
+          class: 'popup_chart_data'
+        ),
+
+        # title: link_to(
+        #   record.title,
+        #   'https://www.build.com' + record.product_link,
+        #   target: '_blank', rel: 'noopener noreferrer'
+        # ),
+        # price: number_to_currency(record.price)
+
+        avg_price: record.avg_price
       }
     end
   end
@@ -27,8 +45,20 @@ class PriceDatatable < AjaxDatatablesRails::Base
   private
 
   def get_raw_records
+    # Group by ... then average
+    test_results = Price.all
+      .group(:brand, :sku)
+      .select('brand, sku, AVG(price) AS avg_price')
+
+    test_results
+
+    # # Simple
+    # # test_results = Price.where(Price.arel_table[:price].gt(320))
+    # # test_results
+
     # insert query here
-    Price.all
+    # Price.all
+
     # sql="
     # select a.brand, a.sku, avg(a.price) as avg_price, b.current_price
     # from prices a
@@ -43,7 +73,6 @@ class PriceDatatable < AjaxDatatablesRails::Base
     # group by 1,2,4
     # "
     # Price.select("*").from("(#{sql}) as subquery")
-
   end
 
   # ==== These methods represent the basic operations to perform on records

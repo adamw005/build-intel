@@ -17,15 +17,6 @@ GIT
       ruby_parser (~> 3.5)
 
 GIT
-  remote: git://github.com/jekuno/milia.git
-  revision: 4a3612d1e026171dc6084428aa2519d9ff40eae6
-  branch: rails4-support
-  specs:
-    milia (1.2.1)
-      devise (~> 3.4)
-      rails (~> 4.2)
-
-GIT
   remote: git://github.com/rails/activerecord-session_store.git
   revision: e97fa9f0d20fd932ecee6124b0b46d244d6f7ce6
   specs:
@@ -87,6 +78,7 @@ GEM
     aws-sdk-resources (2.9.12)
       aws-sdk-core (= 2.9.12)
     aws-sigv4 (1.0.0)
+    bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -189,6 +181,8 @@ GEM
     multi_json (1.12.1)
     multipart-post (2.0.0)
     nesty (1.0.2)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     nokogiri (1.8.0-x86-mingw32)
       mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
@@ -198,6 +192,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    pg (0.20.0)
     pg (0.20.0-x86-mingw32)
     public_suffix (2.0.5)
     rack (1.6.8)
@@ -285,6 +280,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
+    unf_ext (0.0.7.4)
     unf_ext (0.0.7.4-x86-mingw32)
     warden (1.2.7)
       rack (>= 1.0)
@@ -295,6 +291,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
@@ -315,7 +312,6 @@ DEPENDENCIES
   jquery-datatables-rails (~> 3.4.0)
   jquery-rails
   metainspector
-  milia (~> 1.0)!
   nokogiri
   paperclip
   pg (~> 0.20.0)
@@ -333,4 +329,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.13.6
+   1.15.3

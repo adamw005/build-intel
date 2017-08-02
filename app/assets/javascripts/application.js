@@ -18,3 +18,5 @@
 //= require Chart.bundle
 //= require chartkick
 //= require_tree .
+
+//= require prices_datatable

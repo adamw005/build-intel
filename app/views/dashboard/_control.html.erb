@@ -1,0 +1,35 @@
+
+<%= link_to 'Search SKUs',
+      dashboard_control_path(dashboard: { search_skus: 1}),
+      method: :create,
+      class: 'btn btn-default',
+      style: 'color: black;'
+%>
+
+<%= link_to 'Scrape',
+      dashboard_control_path(dashboard: { scrape: 1}),
+      method: :create,
+      class: 'btn btn-primary',
+      style: 'color: white;'
+%>
+
+<%= link_to 'Nuke All Data!',
+      dashboard_control_path(dashboard: { nuke: 1}),
+      method: :create,
+      class: 'btn btn-danger',
+      style: 'color: white;'
+%>
+
+<hr />
+
+<%= link_to 'Export Price Data as CSV',
+      prices_path(format: :csv),
+      class: 'btn btn-default',
+      style: 'color: black;'
+%>
+
+<%= link_to 'Export Build Data as CSV',
+      build_finishes_path(format: :csv),
+      class: 'btn btn-default',
+      style: 'color: black;'
+%>

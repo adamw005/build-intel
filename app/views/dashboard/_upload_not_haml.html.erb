@@ -1,0 +1,16 @@
+<%= form_for @upload, class: 'form-horizontal' do |f| %>
+
+  <div class="form-group">
+    <%= f.label :file, class: 'btn btn-default control-label' do %>
+      <%= f.file_field :file, class: 'btn form-control',
+        style: 'display:none;',
+        onchange: '$("#upload-file-info").html(this.files[0].name)'
+      %>
+      Choose Manufacturer/SKU CSV File
+    <% end -%>
+
+    <span class='label label-warning' id="upload-file-info"></span>
+  </div>
+
+  <%= f.submit 'Upload', class: 'btn btn-primary' %>
+<% end %>

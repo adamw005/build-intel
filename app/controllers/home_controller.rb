@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
-  skip_before_action :authenticate_tenant!, :only => [ :index ]
-
-    def welcome
-    end
-
+  def welcome
+  end
 
   def index
     if user_signed_in?
@@ -19,6 +16,5 @@ class HomeController < ApplicationController
       end
 
     end   # if logged in .. else first time
-
   end
 end

@@ -2,7 +2,7 @@
 
 one:
   application: MyString
-  type: 
+  # type:
   productCompositeId: MyString
   manufacturer: MyString
   productId: MyString
@@ -41,13 +41,13 @@ one:
   sale_saleDetail: MyString
   sale_startDate: 2017-04-28 16:36:12
   sale_endDate: 2017-04-28 16:36:12
-  savingsDetails_standard: 
-  savingsDetails_total: 
+  savingsDetails_standard:
+  savingsDetails_total:
   savingsDetails_percentage: 1
 
 two:
   application: MyString
-  type: 
+  # type:
   productCompositeId: MyString
   manufacturer: MyString
   productId: MyString
@@ -86,6 +86,6 @@ two:
   sale_saleDetail: MyString
   sale_startDate: 2017-04-28 16:36:12
   sale_endDate: 2017-04-28 16:36:12
-  savingsDetails_standard: 
-  savingsDetails_total: 
+  savingsDetails_standard:
+  savingsDetails_total:
   savingsDetails_percentage: 1

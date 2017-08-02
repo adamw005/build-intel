@@ -1,31 +1,33 @@
 Rails.application.configure do
 
-  # Paperclip config
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV.fetch('S3_BUCKET_NAME'),
-      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-      s3_region: ENV.fetch('AWS_REGION'),
-      s3_host_name: ENV.fetch('AWS_ENDPOINT'),
-    }
-  }
+  # # ... START
+  # # Paperclip config
+  # config.paperclip_defaults = {
+  #   storage: :s3,
+  #   s3_credentials: {
+  #     bucket: ENV.fetch('S3_BUCKET_NAME'),
+  #     access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+  #     secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+  #     s3_region: ENV.fetch('AWS_REGION'),
+  #     s3_host_name: ENV.fetch('AWS_ENDPOINT'),
+  #   }
+  # }
 
-  # devise says to define default url
-  config.action_mailer.default_url_options = { :host => 'build-intel.herokuapp.com', :protocol => 'https' }
+  # # devise says to define default url
+  # config.action_mailer.default_url_options = { :host => 'build-intel.herokuapp.com', :protocol => 'https' }
 
-  ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.delivery_method = :smtp
 
-  ActionMailer::Base.smtp_settings = {
-    :authentication => :plain,
-    :address        => 'smtp.mailgun.org',
-    :port           => '587',
-    :domain         => 'sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org',
-    :user_name      => 'postmaster@sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org',
-    :password       => 'da92cc006a725860bddb738983ae19e6',
-    :enable_starttls_auto => true
-  }
+  # ActionMailer::Base.smtp_settings = {
+  #   :authentication => :plain,
+  #   :address        => 'smtp.mailgun.org',
+  #   :port           => '587',
+  #   :domain         => 'sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org',
+  #   :user_name      => 'postmaster@sandbox7d6743916360441e9c7a401ad39fd8e2.mailgun.org',
+  #   :password       => 'da92cc006a725860bddb738983ae19e6',
+  #   :enable_starttls_auto => true
+  # }
+  # # ... END
 
   # Settings specified here will take precedence over those in config/application.rb.
 

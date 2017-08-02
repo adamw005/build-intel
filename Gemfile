@@ -38,7 +38,6 @@ gem 'devise', '~>3.2'
 gem 'haml-rails'
 gem 'html2haml', :git => 'git://github.com/haml/html2haml.git'  # "2.0.0.beta.2",
 gem 'web-app-theme', :git => 'git://github.com/dsaronin/web-app-theme.git'
-gem 'milia', '~>1.0', :github => 'jekuno/milia', :branch => 'rails4-support'
 gem 'chartkick'
 gem 'groupdate'
 gem 'paperclip'

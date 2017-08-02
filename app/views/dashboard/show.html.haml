@@ -1,17 +1,23 @@
 %link{:rel => :stylesheet, :type => :"text/css", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}
 %link{:rel => :stylesheet, :type => :"text/css", :href => "https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"}
 
+= render 'upload_not_haml'
+%br
+
+= render 'control'
+%hr
+
 %table#prices-table{"data-source" => prices_path(format: :json), :class => "table table-striped table-bordered", :cellspacing => "0", :width => "100%"}
-%thead
-  %tr
-    %th Brand
-    %th SKU
-    -# %th Title
-    %th Average Price
-    %th Current Price
+  %thead
+    %tr
+      %th Brand
+      %th SKU
+      -# %th Title
+      -# %th Price
+      %th Average Price
 %tbody
 
--# TODO: Change all of Price. to @price. and add to controller (so only seeing Tenant's data)
+%div#popup_chart_container
 
 -# http://chartkick.com/ for documentation, the paths are to use AJAX
 = line_chart dashboard_three_line_path

@@ -7,15 +7,17 @@ class ScrapeWorker
     proxy_auth = "83a17a4219d543ef8800965d4293ac5d:"
     urls.each do |s|
       url = s[0]
-      tenant_id = s[1]
 
       puts 'Scraping ' + url
       status = ":FAIL   -   "	# Used as the default
 
       # Create the request
       c = Curl::Easy.new(url) do |curl|
+        # ...
         curl.proxypwd = proxy_auth
         curl.proxy_url = proxy
+        curl.timeout = 60
+
         curl.ssl_verify_peer = false  # I ADDED THIS, NOT SECURE
         curl.verbose = false
       end
@@ -23,7 +25,13 @@ class ScrapeWorker
       c.ignore_content_length = true
       c.encoding = 'gzip'
       # Perform request and get body
-      c.perform
+
+      # ...
+      begin
+        c.perform
+      rescue Curl::Err::TimeoutError => exc
+        warn exc
+      end
 
       # Pull out headers
       http_response, *http_headers = c.header_str.split(/[\r\n]+/).map(&:strip)
@@ -56,9 +64,6 @@ class ScrapeWorker
         j = JSON.parse(subs)
         # Multiple SKUs can be on one page
         j["finishes"].each do |f|
-          begin
-            f["tenant_id"] = tenant_id
-          rescue; end
           begin
             f["images_defaultImg"] = f["images"]["defaultImg"]
           rescue; end
@@ -113,7 +118,14 @@ class ScrapeWorker
           begin
             f.delete("iterator")
           rescue; end
-          Price.create(site_name: "Build.com", brand: f["manufacturer"], sku: f["sku"], price: f["price"], quantity: f["stock"], tenant_id: f["tenant_id"])
+
+          Price.create(
+            title: f['title'] || 'No title',
+            product_link: f['productLink'],
+
+            site_name: "Build.com", brand: f["manufacturer"], sku: f["sku"],
+            price: f["price"], quantity: f["stock"]
+          )
           BuildFinish.create(f)
         end
         status = ":SUCCESS   -   " + "\n"
