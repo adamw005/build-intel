@@ -67,8 +67,8 @@ class SearchSkusWorker
           puts ' -SKU Not Found'
 
           # # ...
-          # s.url = 'Not Found'
-          # s.save
+          s.url = 'Not Found'
+          s.save
         end
       end
     end
